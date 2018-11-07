@@ -11,6 +11,15 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.*;
 
+/**
+ * 时间工具类
+ *
+ * @author liuxinxin
+ * @email 
+ * @date 2018/11/7 16:40  
+ * @param 
+ * @return 
+ */
 public class DateUtil
 {
 	public static String defaultDateTimePattern = "yyyy-MM-dd HH:mm:ss";

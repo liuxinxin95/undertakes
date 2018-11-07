@@ -6,6 +6,15 @@ import org.apache.poi.ss.usermodel.Cell;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
+/**
+ * 导出Excel工具类
+ *
+ * @author liuxinxin
+ * @email 
+ * @date 2018/11/7 16:40  
+ * @param 
+ * @return 
+ */
 public class ExcelUtil {
 
     /**

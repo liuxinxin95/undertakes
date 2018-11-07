@@ -2,6 +2,15 @@ package com.example.undertakes.common.utils;
 
 import java.math.BigDecimal;
 
+/**
+ * 数据计算工具类
+ *
+ * @author liuxinxin
+ * @email 
+ * @date 2018/11/7 16:40  
+ * @param 
+ * @return 
+ */
 public class MathUtils {
 
     // 默认除法运算精度
