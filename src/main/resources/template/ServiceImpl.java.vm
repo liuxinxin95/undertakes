@@ -1,0 +1,52 @@
+package ${package}.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import java.util.Map;
+import org.springframework.transaction.annotation.Transactional;
+import ${package}.dao.${className}Dao;
+import ${package}.entity.${className};
+import ${package}.service.${className}Service;
+
+
+@Service("${lowClassName}Service")
+public class ${className}ServiceImpl implements ${className}Service {
+    @Autowired
+    private ${className}Dao ${lowClassName}Dao;
+
+    @Override
+    public ${className} queryObject(${pk.attrType} ${pk.lowAttrName}) {
+        return ${lowClassName}Dao.queryObject(${pk.lowAttrName});
+    }
+
+    @Override
+    public List<${className}> queryList(Map<String, Object> map) {
+        return ${lowClassName}Dao.queryList(map);
+    }
+
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void save(${className} ${className}) throws Exception{
+            ${lowClassName}Dao.save(${className});
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(${className} ${className}) throws Exception{
+            ${lowClassName}Dao.update(${className});
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(${pk.attrType} ${pk.lowAttrName}) throws Exception{
+            ${lowClassName}Dao.delete(${pk.lowAttrName});
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteBatch(${pk.attrType}[]${pk.lowAttrName}s) throws Exception{
+            ${lowClassName}Dao.deleteBatch(${pk.lowAttrName}s);
+    }
+
+}

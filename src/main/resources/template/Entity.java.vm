@@ -1,0 +1,46 @@
+package  ${package}.entity;
+import java.util.Date;
+import javax.persistence.*;
+
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Entity
+@Table(name = "${tableName}")
+public class ${className} {
+
+##    private static final long serialVersionUID = 1L;
+
+#foreach ($column in $columns)
+
+    #if($column.columnName=="id")
+       /**
+        * $column.comments
+        */
+       @Id
+       @GeneratedValue(strategy = GenerationType.IDENTITY)
+       @Column(name = "$column.columnName")
+       private $column.attrType $column.lowAttrName;
+       #else
+       /**
+        * $column.comments
+        */
+        @Column(name = "$column.columnName")
+        private $column.attrType $column.lowAttrName;
+    #end
+#end
+
+    #foreach ($column in $columns)
+
+        public $column.attrType get${column.upAttrName}() {
+            return $column.lowAttrName; }
+
+        public void set${column.upAttrName}($column.attrType $column.lowAttrName) {
+            this.$column.lowAttrName = $column.lowAttrName;}
+    #end
+}

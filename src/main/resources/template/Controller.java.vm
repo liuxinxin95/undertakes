@@ -1,0 +1,101 @@
+package ${package}.controller;
+
+import ${package}.entity.${className};
+import ${package}.service.${className}Service;
+import ${package}.util.Result;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import org.apache.commons.collections.MapUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Slf4j
+@RestController
+@RequestMapping("${pathName}")
+public class ${className}Controller {
+
+    private static Logger log = LoggerFactory.getLogger(${className}Controller.class);
+    @Autowired
+
+    @Autowired
+    private ${className}Service ${lowClassName}Service;
+
+    /**
+     * 列表
+     */
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
+    public Result list(@RequestBody Map<String, Object> params) {
+        //查询列表数据
+        PageInfo<${className}> pageInfo = PageHelper.startPage(MapUtils.getInteger(params, "page"),
+                MapUtils.getInteger(params, "limit")).doSelectPageInfo(() -> ${lowClassName}Service.queryList(params));
+        return Result.ok().put("page", pageInfo);
+    }
+
+
+    /**
+     * 信息
+     */
+    @RequestMapping(value = "/info/{${pk.lowAttrName}}",method = RequestMethod.GET)
+    public Result info(@PathVariable("${pk.lowAttrName}") ${pk.attrType} ${pk.lowAttrName}) {
+            ${className} ${lowClassName} = ${lowClassName}Service.queryObject(${pk.lowAttrName});
+
+        return Result.ok().put("${lowClassName}", ${lowClassName});
+    }
+
+    /**
+     * 保存
+     */
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public Result save(@RequestBody ${className} ${lowClassName}) {
+        try {
+                ${lowClassName}Service.save(${lowClassName});
+        } catch (Exception e) {
+            log.error("保存异常", e);
+            return Result.error("保存异常");
+        }
+
+        return Result.ok();
+    }
+
+    /**
+     * 修改
+     */
+    @RequestMapping(value = "/update" ,method = RequestMethod.PUT)
+    public Result update(@RequestBody ${className} ${lowClassName}) {
+        try {
+                ${lowClassName}Service.update(${lowClassName});
+        } catch (Exception e) {
+            log.error("修改异常", e);
+            return Result.error("修改异常");
+        }
+        return Result.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @RequestMapping(value = "/delete" ,method = RequestMethod.DELETE)
+    public Result delete(@RequestBody ${pk.attrType}[]${pk.lowAttrName}s) {
+        try {
+            if (${pk.lowAttrName}s.length == 1) {
+                    ${lowClassName}Service.delete(${pk.lowAttrName}s[0]);
+            } else {
+                    ${lowClassName}Service.deleteBatch(${pk.lowAttrName}s);
+            }
+        } catch (Exception e) {
+            log.error("删除异常", e);
+            return Result.error("删除异常");
+        }
+        return Result.ok();
+    }
+
+}
