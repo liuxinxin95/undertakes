@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  * @email ${email}
  * @date ${datetime}
  */
-@Slf4j
+@Api("${comments}")
 @RestController
 @RequestMapping("${pathName}")
 public class ${className}Controller {
@@ -32,6 +32,7 @@ public class ${className}Controller {
     /**
      * 列表
      */
+    @ApiOperation("列表")
     @RequestMapping(value = "/list",method = RequestMethod.POST)
     public Result list(@RequestBody Map<String, Object> params) {
         //查询列表数据
@@ -44,6 +45,7 @@ public class ${className}Controller {
     /**
      * 信息
      */
+    @ApiOperation("信息")
     @RequestMapping(value = "/info/{${pk.lowAttrName}}",method = RequestMethod.GET)
     public Result info(@PathVariable("${pk.lowAttrName}") ${pk.attrType} ${pk.lowAttrName}) {
             ${className} ${lowClassName} = ${lowClassName}Service.queryObject(${pk.lowAttrName});
@@ -54,6 +56,7 @@ public class ${className}Controller {
     /**
      * 保存
      */
+    @ApiOperation("保存")
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public Result save(@RequestBody ${className} ${lowClassName}) {
         try {
@@ -69,6 +72,7 @@ public class ${className}Controller {
     /**
      * 修改
      */
+    @ApiOperation("修改")
     @RequestMapping(value = "/update" ,method = RequestMethod.PUT)
     public Result update(@RequestBody ${className} ${lowClassName}) {
         try {
@@ -83,6 +87,7 @@ public class ${className}Controller {
     /**
      * 删除
      */
+    @ApiOperation("删除")
     @RequestMapping(value = "/delete" ,method = RequestMethod.DELETE)
     public Result delete(@RequestBody ${pk.attrType}[]${pk.lowAttrName}s) {
         try {
