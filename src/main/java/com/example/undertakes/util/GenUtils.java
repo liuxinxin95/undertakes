@@ -1,6 +1,7 @@
 package com.example.undertakes.util;
 
 
+import com.example.undertakes.common.utils.DateUtil;
 import com.example.undertakes.entity.ColumnEntity;
 import com.example.undertakes.entity.TableEntity;
 import com.example.undertakes.exception.RRException;
@@ -10,7 +11,6 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
-import com.example.undertakes.util.DateUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
@@ -110,7 +110,7 @@ public class GenUtils {
         map.put("package", config.getString("package"));
         map.put("author", config.getString("author"));
         map.put("email", config.getString("email"));
-        map.put("datetime", DateUtils.format(LocalDate.now()));
+        map.put("datetime", DateUtil.format(LocalDate.now()));
         VelocityContext context = new VelocityContext(map);
 
         //获取模板列表

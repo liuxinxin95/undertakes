@@ -2,12 +2,11 @@ package com.example.undertakes.controller;
 
 
 
+import com.example.undertakes.common.utils.DateUtil;
 import com.example.undertakes.service.SysGeneratorService;
-import com.example.undertakes.util.DateUtils;
 import com.example.undertakes.util.Result;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import  org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
@@ -80,7 +79,7 @@ public class SysGeneratorController {
             log.error("生成异常", e);
             return Result.error("生成失败");
         }
-        String fileName = "gender" + DateUtils.formatDateTime(LocalDateTime.now(), "yyyyMMddHHMMss") + ".zip";
+        String fileName = "gender" + DateUtil.formatDateTime(LocalDateTime.now(), "yyyyMMddHHMMss") + ".zip";
 //                File file = new File(GenUtils.getClasspath() + "code/" + fileName);
         File file = new File("F:/code/" + fileName);
         try {
