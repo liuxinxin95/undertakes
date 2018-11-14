@@ -1,0 +1,79 @@
+@charset "utf-8";
+/* -----------H-ui前端框架-----------------------
+H-ui.login.css v2.2
+Copyright H-ui Inc.
+http://www.H-ui.net
+date:2015.4.29
+Created & Modified by guojunhui.
+----------------------------------------------*/
+body{font-size:14px}
+
+.header,.footer{ position:absolute; left:0; right:0; width:100%; z-index:99}
+.header{top:0; height:60px; background:#426374 url(../images/logo.png) no-repeat 0 center}
+
+.loginWraper{ position:absolute;width:100%; left:0; top:0; bottom:0; right:0; z-index:1; background:#3283AC url(../images/login_bg.png) no-repeat center;background-size:cover}
+.loginBox{ position:absolute; width:475px; height:437px; background-color:rgba(255,255,255,0.8); left:50%; top:50%; margin-left:-237px; margin-top:-238px; padding-top:30px;}
+.login-content{width:75%;margin:0 auto;text-align: center;}
+.login-logo{width:240px;height:60px;margin-bottom:20px;}
+.loginBox .row{height: 40px;margin-top:30px;border-bottom:1px solid #2e9ff2;}
+.loginBox .reset{margin-top:20px}
+.loginBox .row .form-label {margin-top:0;}
+.loginBox .row .form-label .iconfont{ font-size:20px;color:#2e9ff2}
+	.yzm a{ color:#426374; font-size:12px}
+.input-text.focus{
+	box-shadow:none;
+}
+.formControls{
+	text-align: left;
+	position: relative;
+}
+.formControls label{
+	position: absolute;
+	top:42px;
+	left:0;
+}
+.formControls input,.formControls input{
+	background-color: transparent;
+	color:rgba(102,102,102);
+}
+.formControls input,.formControls input:hover{
+	border:none;	
+}
+
+.form .login-btn{
+	width:100%;
+	height:53px;
+	background-color: #138aca;
+	font-size:21px;
+	opacity: 1;
+	margin-top:40px;
+}
+.login-bottom{
+	position: relative;
+	margin-top:20px;
+	text-align: left;
+}
+.login-bottom label{
+	color:#666666;
+	cursor: pointer;
+}
+.login-bottom>div.login-bottom-right{
+	position: absolute;
+	right:10px;
+	top:0;
+}
+.login-bottom-right a{
+	color:#666666;
+	font-size:13px;
+}
+#span_msg{ font-size:14px; color:Red; line-height:40px; height:40px; margin-left:10px; width:160px;; float:left}
+
+.hd_msg{font-size:12px; color:#fff; height:30px; z-index:100;position: absolute; padding-left:50px; padding-top:5px}
+.hd_msg a{ color:#fff}
+.hd_msg a:hover{ color:#fff; text-decoration:underline}
+
+.footer{ height:25px; line-height:25px; bottom:0; text-align:center; color:#fff; font-size:12px; background-color:rgba(0,0,0,.7)}
+.header,.footer,.loginWraper{min-width:617px}
+
+#ie6-warning{background:#fff url(/jscss/demoimg/201006/warning.gif) no-repeat 3px center;position:absolute;top:0;left:0;font-size:12px;color:#333;width:97%;padding: 2px 15px 2px 23px;text-align:left}
+#ie6-warning a {text-decoration:none}
