@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 
 /**
- * ????
+ * 用户
  *
  * @author liuxinxin
  * @email 18634318474@163.com
