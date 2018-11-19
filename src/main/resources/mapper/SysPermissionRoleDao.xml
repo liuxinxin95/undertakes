@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.undertakes.dao.SysPermissionRoleDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.example.undertakes.entity.SysPermissionRole" id="sysPermissionRoleMap">
+                    <result property="id" column="id"/>
+                    <result property="roleId" column="role_id"/>
+                    <result property="permissionId" column="permission_id"/>
+                    <result property="createTime" column="create_time"/>
+            </resultMap>
+
+    <select id="queryObject" resultMap="sysPermissionRoleMap">
+        select *
+        from sys_permission_role where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="sysPermissionRoleMap">
+        select * from sys_permission_role
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <insert id="save" parameterType="com.example.undertakes.entity.SysPermissionRole"            useGeneratedKeys="true" keyProperty="id">
+        insert into sys_permission_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                            <if test="id != null">
+                    `id`,
+                </if>
+                            <if test="roleId != null">
+                    `role_id`,
+                </if>
+                            <if test="permissionId != null">
+                    `permission_id`,
+                </if>
+                            <if test="createTime != null">
+                    `create_time`,
+                </if>
+                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="$column.lowAttrName != null">
+                #{$column.lowAttrName},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.example.undertakes.entity.SysPermissionRole">
+        update sys_permission_role
+        <set>
+                                                                            <if test="roleId != null">
+                        `role_id` = #{roleId}
+                        ,
+                                            </if>
+                                                                <if test="permissionId != null">
+                        `permission_id` = #{permissionId}
+                        ,
+                                            </if>
+                                                                <if test="createTime != null">
+                        `create_time` = #{createTime}
+                                            </if>
+                                    </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from sys_permission_role where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from sys_permission_role where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
