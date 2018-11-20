@@ -2,6 +2,7 @@ package com.example.undertakes.service;
 
 import com.example.undertakes.entity.SysUser;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 
@@ -50,4 +51,8 @@ public interface SysUserService {
     * @throws Exception
     */
     void deleteBatch(Long[] userIds) throws Exception;
+
+    SysUser loadUserByUsername(String username);
+
+    SysUser isValidPassword(SysUser sysUser);
 }

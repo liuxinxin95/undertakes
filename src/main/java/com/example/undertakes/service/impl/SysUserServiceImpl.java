@@ -4,6 +4,7 @@ import com.example.undertakes.entity.SysUser;
 import com.example.undertakes.exception.RRException;
 import com.example.undertakes.repository.SysUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
@@ -65,5 +66,12 @@ public class SysUserServiceImpl implements SysUserService {
         user.setPassword(pwd);
         return user;
     }
+
+    public SysUser isValidPassword(SysUser sysUser){
+        Example<SysUser> example = Example.of(sysUser);
+        SysUser one = sysUserRepository.findOne(example);
+        return one;
+    }
+
 
 }

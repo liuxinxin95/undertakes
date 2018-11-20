@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Api("角色")
 @RestController
-@RequestMapping("sysrole")
+@RequestMapping("/sysrole")
 public class SysRoleController {
 
     private static Logger log = LoggerFactory.getLogger(SysRoleController.class);

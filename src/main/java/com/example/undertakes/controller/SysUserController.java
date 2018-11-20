@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 /**
@@ -21,7 +22,7 @@ import java.util.Map;
  * @date 2018-11-13
  */
 @RestController
-@RequestMapping("sysuser")
+@RequestMapping("api/sysuser")
 public class SysUserController {
 
     private static Logger log = LoggerFactory.getLogger(SysUserController.class);
@@ -96,5 +97,6 @@ public class SysUserController {
         }
         return Result.ok();
     }
+
 
 }
