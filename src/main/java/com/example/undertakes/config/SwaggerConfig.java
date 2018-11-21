@@ -28,7 +28,7 @@ public class SwaggerConfig {
         pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.example.undertakes.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(pars)
