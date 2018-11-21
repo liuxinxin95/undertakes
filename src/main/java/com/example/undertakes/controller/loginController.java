@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,16 +30,16 @@ public class loginController {
     @Autowired
     private SysUserService sysUserService;
 
-    @RequestMapping(value="check", method=RequestMethod.POST)
+    @RequestMapping(value="/check", method=RequestMethod.POST)
     @ApiOperation(value="登入身份验证（JWT验证）", notes="登入")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "username",value = "用户名称",required = true,paramType = "form",dataType = "string"),
-        @ApiImplicitParam(name = "password",value = "密码",required = true,paramType = "form",dataType = "string")
+        @ApiImplicitParam(name = "username",value = "用户名称",required = true,paramType = "query",dataType = "string"),
+        @ApiImplicitParam(name = "password",value = "密码",required = true,paramType = "query",dataType = "string")
     })
-    public Object getLoginInfo(HttpServletResponse response, HttpServletRequest request) {
+    public Object getLoginInfo(String username, String password) {
         SysUser sysUser = new SysUser();
-        sysUser.setUsername(request.getParameter("username").toString());
-        sysUser.setPassword(request.getParameter("password").toString());
+        sysUser.setUsername(username);
+        sysUser.setPassword(password);
         if(isValidPassword(sysUser)) {
             String jwt = JwtUtil.generateToken(sysUser.getUsername());
             return new HashMap<String,String>(){{
@@ -49,13 +50,13 @@ public class loginController {
         }
     }
 
-    @Bean
-    public FilterRegistrationBean jwtFilter() {
-        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
-        registrationBean.setFilter(filter);
-        return registrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean jwtFilter() {
+//        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//        JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
+//        registrationBean.setFilter(filter);
+//        return registrationBean;
+//    }
 
     //密码是否正确
     private boolean isValidPassword(SysUser sysUser) {

@@ -35,7 +35,7 @@ public class MD5 {
     
     public static void main(String args[])
     {
-        System.out.println(MD5.encodeByMd5AndSalt("123456"));
+        System.out.println(MD5.encodeByMd5AndSalt("admin"));
     }
     
     /**
