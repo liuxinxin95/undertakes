@@ -6,10 +6,9 @@ import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
-import springfox.documentation.service.Parameter;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -22,18 +21,46 @@ public class SwaggerConfig {
     @Bean
     public Docket productApi() {
 
-        ParameterBuilder tokenPar = new ParameterBuilder();
-        List<Parameter> pars = new ArrayList<>();
-        tokenPar.name("Authorization").description("令牌").modelRef(new ModelRef("string")).parameterType("header").required(false).build();
-        pars.add(tokenPar.build());
+//        ParameterBuilder tokenPar = new ParameterBuilder();
+//        List<Parameter> pars = new ArrayList<>();
+//        tokenPar.name("Authorization").description("令牌").modelRef(new ModelRef("string")).parameterType("header").required(true).build();
+//        pars.add(tokenPar.build());
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.undertakes.controller"))
                 .paths(PathSelectors.any())
                 .build()
-                .globalOperationParameters(pars)
-                .apiInfo(metaData());
+                .securitySchemes(securitySchemes())
+                .securityContexts(securityContexts());
+//
+//                .globalOperationParameters(pars)
+//                .apiInfo(metaData());
     }
+
+    private List<ApiKey> securitySchemes() {
+        List<ApiKey> apiKeys=new ArrayList<>();
+        apiKeys.add(new ApiKey("Authorization", "Authorization", "header"));
+        return apiKeys;
+    }
+
+    private List<SecurityContext> securityContexts() {
+        List<SecurityContext> arrayList = new ArrayList();
+        arrayList.add(SecurityContext.builder()
+                .securityReferences(defaultAuth())
+                .forPaths(PathSelectors.regex("^(?!auth).*$"))
+                .build()) ;
+        return arrayList;
+    }
+
+    private List<SecurityReference> defaultAuth() {
+        AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
+        AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
+        authorizationScopes[0] = authorizationScope;
+        List<SecurityReference> securityReferences = new ArrayList<>();
+        securityReferences.add(new SecurityReference("Authorization", authorizationScopes)) ;
+        return  securityReferences;
+    }
+
     private ApiInfo metaData() {
         ApiInfo apiInfo = new ApiInfoBuilder()
                 .title("API文档")

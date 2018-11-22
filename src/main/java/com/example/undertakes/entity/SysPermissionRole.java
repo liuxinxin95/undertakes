@@ -1,4 +1,5 @@
 package com.example.undertakes.entity;
+
 import java.util.Date;
 import javax.persistence.*;
 
@@ -15,55 +16,62 @@ import javax.persistence.*;
 public class SysPermissionRole {
 
 
+    /**
+     *
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-           /**
-        * 
-        */
-       @Id
-       @GeneratedValue(strategy = GenerationType.IDENTITY)
-       @Column(name = "id")
-       private Long id;
-       
-           /**
-        * 角色ID
-        */
-        @Column(name = "role_id")
-        private Long roleId;
-    
-           /**
-        * 权限ID
-        */
-        @Column(name = "permission_id")
-        private Long permissionId;
-    
-           /**
-        * 创建时间
-        */
-        @Column(name = "create_time")
-        private Date createTime;
-    
-    
-        public Long getId() {
-            return id; }
+    /**
+     * 角色ID
+     */
+    @Column(name = "role_id")
+    private Long roleId;
 
-        public void setId(Long id) {
-            this.id = id;}
-    
-        public Long getRoleId() {
-            return roleId; }
+    /**
+     * 权限ID
+     */
+    @Column(name = "permission_id")
+    private Long permissionId;
 
-        public void setRoleId(Long roleId) {
-            this.roleId = roleId;}
-    
-        public Long getPermissionId() {
-            return permissionId; }
+    /**
+     * 创建时间
+     */
+    @Column(name = "create_time")
+    private Date createTime;
 
-        public void setPermissionId(Long permissionId) {
-            this.permissionId = permissionId;}
-    
-        public Date getCreateTime() {
-            return createTime; }
 
-        public void setCreateTime(Date createTime) {
-            this.createTime = createTime;}
+    public Long getId() {
+        return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
+
+    public Long getPermissionId() {
+        return permissionId;
+    }
+
+    public void setPermissionId(Long permissionId) {
+        this.permissionId = permissionId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+}
