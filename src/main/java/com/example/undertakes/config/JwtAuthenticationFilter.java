@@ -22,9 +22,9 @@ import java.util.ArrayList;
 
 public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
-    @Autowired
-    @Qualifier("sysUserService")
-    private SysUserService sysUserService;
+//    @Autowired
+//    @Qualifier("sysUserService")
+//    private SysUserService sysUserService;
 
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
 
         if (header == null || !header.startsWith("Bearer ")) {
             chain.doFilter(request, response);
-            return;
+            return  ;
         }
 
         UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
@@ -52,9 +52,9 @@ public class JwtAuthenticationFilter extends BasicAuthenticationFilter {
             // parse the token.
             Claims claims = JwtUtil.validateToken(token);
             String username=claims.getSubject();
-            SysUser sysUser = sysUserService.loadUserByUsername(username);
-            if (sysUser != null) {
-                return new UsernamePasswordAuthenticationToken(sysUser, null, new ArrayList<>());
+//            SysUser sysUser = sysUserService.loadUserByUsername(username);
+            if (username != null) {
+                return new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
             }
             return null;
         }
