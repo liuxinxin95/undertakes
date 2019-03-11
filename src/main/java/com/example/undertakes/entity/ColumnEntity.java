@@ -11,6 +11,7 @@ package com.example.undertakes.entity;
  * @return
  */
 public class ColumnEntity {
+    
     /**
      * 列名
      */
