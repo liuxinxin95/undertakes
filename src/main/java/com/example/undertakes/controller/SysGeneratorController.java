@@ -30,7 +30,7 @@ import java.util.Map;
  */
 @Api("代码生成")
 @RestController
-@RequestMapping("/sys/generator")
+@RequestMapping("sys/generator")
 public class SysGeneratorController {
 
     private static Logger log=LoggerFactory.getLogger(SysGeneratorController.class);
