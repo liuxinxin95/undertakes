@@ -1,6 +1,8 @@
 package com.example.undertakes.service.impl;
 
+import com.example.undertakes.dao.BlobFielddDao;
 import com.example.undertakes.dao.SysPermissionDao;
+import com.example.undertakes.entity.BlobField;
 import com.example.undertakes.entity.SysPermission;
 import com.example.undertakes.entity.SysUser;
 import com.example.undertakes.repository.SysPermissionRepository;
@@ -33,6 +35,13 @@ public class CustomUserService implements UserDetailsService { //自定义UserDe
     SysPermissionRepository sysPermissionRepository;
     @Autowired
     SysPermissionDao sysPermissionDao;
+    @Autowired
+    private BlobFielddDao blobFielddDao;
+
+
+    public List<BlobField> findList(){
+        return blobFielddDao.findList();
+    }
 
     public UserDetails loadUserByUsername(String username) {
         SysUser user = sysUserRepository.findByUsername(username);
