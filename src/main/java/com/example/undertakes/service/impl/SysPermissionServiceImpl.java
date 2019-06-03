@@ -29,14 +29,14 @@ public class SysPermissionServiceImpl implements SysPermissionService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(SysPermission SysPermission) throws Exception{
-            sysPermissionDao.save(SysPermission);
+    public void save(SysPermission sysPermission) throws Exception{
+            sysPermissionDao.save(sysPermission);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(SysPermission SysPermission) throws Exception{
-            sysPermissionDao.update(SysPermission);
+    public void update(SysPermission sysPermission) throws Exception{
+            sysPermissionDao.update(sysPermission);
     }
 
     @Override

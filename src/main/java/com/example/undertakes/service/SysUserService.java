@@ -32,13 +32,13 @@ public interface SysUserService {
     * 保存
     * @throws Exception
     */
-    void save(SysUser SysUser) throws Exception;
+    void save(SysUser sysUser) throws Exception;
 
     /**
     * 更新
     * @throws Exception
     */
-    void update(SysUser SysUser) throws Exception;
+    void update(SysUser sysUser) throws Exception;
 
     /**
     * 删除

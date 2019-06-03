@@ -29,14 +29,14 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(SysUserRole SysUserRole) throws Exception{
-            sysUserRoleDao.save(SysUserRole);
+    public void save(SysUserRole sysUserRole) throws Exception{
+            sysUserRoleDao.save(sysUserRole);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(SysUserRole SysUserRole) throws Exception{
-            sysUserRoleDao.update(SysUserRole);
+    public void update(SysUserRole sysUserRole) throws Exception{
+            sysUserRoleDao.update(sysUserRole);
     }
 
     @Override

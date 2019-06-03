@@ -29,14 +29,14 @@ public class SysPermissionRoleServiceImpl implements SysPermissionRoleService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(SysPermissionRole SysPermissionRole) throws Exception{
-            sysPermissionRoleDao.save(SysPermissionRole);
+    public void save(SysPermissionRole sysPermissionRole) throws Exception{
+            sysPermissionRoleDao.save(sysPermissionRole);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(SysPermissionRole SysPermissionRole) throws Exception{
-            sysPermissionRoleDao.update(SysPermissionRole);
+    public void update(SysPermissionRole sysPermissionRole) throws Exception{
+            sysPermissionRoleDao.update(sysPermissionRole);
     }
 
     @Override

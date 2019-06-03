@@ -141,7 +141,6 @@ public class ExcelUtil {
         style.setBorderTop(HSSFCellStyle.BORDER_THIN);
         style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
         style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-//        style.setAlignment(HorizontalAlignment.CENTER);
         // 生成一个字体
         HSSFFont font = workbook.createFont();
         font.setColor(HSSFColor.BLACK.index);

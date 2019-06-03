@@ -29,13 +29,13 @@ public interface SysRoleService {
     * 保存
     * @throws Exception
     */
-    void save(SysRole SysRole) throws Exception;
+    void save(SysRole sysRole) throws Exception;
 
     /**
     * 更新
     * @throws Exception
     */
-    void update(SysRole SysRole) throws Exception;
+    void update(SysRole sysRole) throws Exception;
 
     /**
     * 删除

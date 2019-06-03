@@ -50,13 +50,6 @@ public class loginController {
         }
     }
 
-//    @Bean
-//    public FilterRegistrationBean jwtFilter() {
-//        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-//        JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
-//        registrationBean.setFilter(filter);
-//        return registrationBean;
-//    }
 
     //密码是否正确
     private boolean isValidPassword(SysUser sysUser) {

@@ -29,13 +29,13 @@ public interface SysPermissionService {
     * 保存
     * @throws Exception
     */
-    void save(SysPermission SysPermission) throws Exception;
+    void save(SysPermission sysPermission) throws Exception;
 
     /**
     * 更新
     * @throws Exception
     */
-    void update(SysPermission SysPermission) throws Exception;
+    void update(SysPermission sysPermission) throws Exception;
 
     /**
     * 删除

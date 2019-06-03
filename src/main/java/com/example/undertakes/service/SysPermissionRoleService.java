@@ -29,13 +29,13 @@ public interface SysPermissionRoleService {
     * 保存
     * @throws Exception
     */
-    void save(SysPermissionRole SysPermissionRole) throws Exception;
+    void save(SysPermissionRole sysPermissionRole) throws Exception;
 
     /**
     * 更新
     * @throws Exception
     */
-    void update(SysPermissionRole SysPermissionRole) throws Exception;
+    void update(SysPermissionRole sysPermissionRole) throws Exception;
 
     /**
     * 删除

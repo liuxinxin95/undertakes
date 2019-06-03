@@ -18,7 +18,7 @@ import java.util.Map;
 public class Result extends HashMap<String, Object> {
     private static final long serialVersionUID = 1L;
 
-    private static final Integer errorcode=0001;
+    private static final Integer ERROR_CODE=0001;
 
 
     public Result() {
@@ -26,11 +26,11 @@ public class Result extends HashMap<String, Object> {
     }
 
     public static Result error() {
-        return error(errorcode, "未知异常，请联系管理员");
+        return error(ERROR_CODE, "未知异常，请联系管理员");
     }
 
     public static Result error(String msg) {
-        return error(errorcode, msg);
+        return error(ERROR_CODE, msg);
     }
 
     public static Result error(int code, String msg) {

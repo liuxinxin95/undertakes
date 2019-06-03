@@ -5,9 +5,11 @@ package com.example.undertakes.controller;
 import com.example.undertakes.common.utils.DateUtil;
 import com.example.undertakes.service.SysGeneratorService;
 import com.example.undertakes.util.Result;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.collections.MapUtils;
 import  org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,9 +70,6 @@ public class SysGeneratorController {
     @RequestMapping(value = "/code" ,method = RequestMethod.POST,consumes = "application/json;charset=utf-8")
     @ResponseBody
     public Result code(HttpServletRequest request, @RequestBody Map<String, Object> params) throws IOException {
-//        String[] tableNames = new String[]{};
-////        String tables = request.getParameter("tables");
-//        tableNames = JSON.parseArray(tables).toArray(tableNames);
         List<String> tables= (List<String>) params.get("tables");
         byte[] data;
         try {
@@ -80,7 +79,6 @@ public class SysGeneratorController {
             return Result.error("生成失败");
         }
         String fileName = "gender" + DateUtil.formatDateTime(LocalDateTime.now(), "yyyyMMddHHMMss") + ".zip";
-//                File file = new File(GenUtils.getClasspath() + "code/" + fileName);
         File file = new File("F:/code/" + fileName);
         try {
             FileUtils.writeByteArrayToFile(file, data);
@@ -89,11 +87,5 @@ public class SysGeneratorController {
             return Result.error("生成失败,文件写入异常");
         }
         return Result.ok();
-//        response.reset();
-//        response.setHeader("Content-Disposition", "attachment; filename=\"renren.zip\"");
-//        response.addHeader("Content-Length", "" + data.length);
-//        response.setContentType("application/octet-stream; charset=UTF-8");
-//
-//        IOUtils.write(data, response.getOutputStream());
     }
 }

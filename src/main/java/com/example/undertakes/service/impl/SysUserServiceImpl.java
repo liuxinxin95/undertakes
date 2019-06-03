@@ -11,10 +11,15 @@ import com.example.undertakes.dao.SysUserDao;
 import com.example.undertakes.service.SysUserService;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 
+
+/**
+ * @author lxx
+ */
 @Service("sysUserService")
 public class SysUserServiceImpl implements SysUserService {
-    @Autowired
+    @Resource
     private SysUserDao sysUserDao;
 
     @Autowired
@@ -33,14 +38,14 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(SysUser SysUser) throws Exception{
-            sysUserDao.save(SysUser);
+    public void save(SysUser sysUser) throws Exception{
+            sysUserDao.save(sysUser);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(SysUser SysUser) throws Exception{
-            sysUserDao.update(SysUser);
+    public void update(SysUser sysUser) throws Exception{
+            sysUserDao.update(sysUser);
     }
 
     @Override
@@ -67,6 +72,7 @@ public class SysUserServiceImpl implements SysUserService {
         return user;
     }
 
+    @Override
     public SysUser isValidPassword(SysUser sysUser){
         Example<SysUser> example = Example.of(sysUser);
         SysUser one = sysUserRepository.findOne(example);

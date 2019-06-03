@@ -17,7 +17,7 @@ public class MD5 {
     //加的盐
     private static final String SALT = "HXWcjvQWVG1wI4FQBLZpQ3pWj48AV63d";
    
-    public static String EncoderByMd5(String buf) {
+    public static String encoderByMd5(String buf) {
     	try {
 			MessageDigest digist = MessageDigest.getInstance("MD5");
 			byte[] rs = digist.digest(buf.getBytes());
@@ -33,7 +33,7 @@ public class MD5 {
     	
     }
     
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         System.out.println(MD5.encodeByMd5AndSalt("admin"));
     }
@@ -46,16 +46,16 @@ public class MD5 {
      */
     public static String encodeByMd5AndSalt(String inbuf)
     {
-        return EncoderByMd5(EncoderByMd5(inbuf)+SALT);
+        return encoderByMd5(encoderByMd5(inbuf)+SALT);
     }
     
     
     public static String byteHEX(byte ib) {
-          char[] Digit = { '0','1','2','3','4','5','6','7','8','9',
+          char[] digit = { '0','1','2','3','4','5','6','7','8','9',
           'A','B','C','D','E','F' };
           char [] ob = new char[2];
-          ob[0] = Digit[(ib >>> 4) & 0X0F];
-          ob[1] = Digit[ib & 0X0F];
+          ob[0] = digit[(ib >>> 4) & 0X0F];
+          ob[1] = digit[ib & 0X0F];
           String s = new String(ob);
           return s;
     }

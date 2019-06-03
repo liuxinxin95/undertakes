@@ -1,6 +1,7 @@
 package com.example.undertakes.common.utils;
 
 import org.apache.commons.lang3.StringUtils;
+
 import java.security.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,7 +16,8 @@ import java.util.*;
  * @Date 2018/11/14 9:08
  * @Param
  * @Return
-*/
+ */
+@SuppressWarnings("AliControlFlowStatementWithoutBraces")
 public final class DateUtil {
 
 
@@ -25,16 +27,16 @@ public final class DateUtil {
 
     public static String defaultTimeZone = "GMT+8";
 
-    public static String PRE="pre";
+    public static String PRE = "pre";
     public static String NEXT = "next";
 
     private DateUtil() {
     }
+
     /**
      * 获得默认的 date pattern
      */
-    public static String getDateTimePattern()
-    {
+    public static String getDateTimePattern() {
         return defaultDateTimePattern;
     }
 
@@ -94,9 +96,8 @@ public final class DateUtil {
     /**
      * 使用预设格式将字符串转为Date
      */
-    public static Date parse(String strDate)
-    {
-        Date date=null;
+    public static Date parse(String strDate) {
+        Date date = null;
         date = strDate == null || "".equals(strDate) ? null : parse(strDate, getDateTimePattern());
         return date;
     }
@@ -104,23 +105,18 @@ public final class DateUtil {
     /**
      * 使用参数Format将字符串转为Date
      */
-    public static Date parse(String strDate, String pattern)
-    {
-        Date date=null;
-        try
-        {
-            if(strDate != null || !"".equals(strDate))
-            {
-                date=new SimpleDateFormat(pattern).parse(strDate);
+    public static Date parse(String strDate, String pattern) {
+        Date date = null;
+        try {
+            if (strDate != null || !"".equals(strDate)) {
+                date = new SimpleDateFormat(pattern).parse(strDate);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return date;
     }
-    
+
     /**
      * 字符串转换为时间
      *
@@ -176,6 +172,7 @@ public final class DateUtil {
 
     /**
      * 获取本月的最后一天
+     *
      * @return
      */
     public static LocalDate endDateOfMonth() {
@@ -183,86 +180,73 @@ public final class DateUtil {
     }
 
     /**
-     *
+     * @return Date
      * @author
      * @title :getNowTime
      * @Description:获取当前时间，返回14位格式的date日期
-     * @return Date
      * @date 2015年7月28日 上午11:11:47
      */
-    public static Date getNowTime()
-    {
+    public static Date getNowTime() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
         String now = df.format(new Date());
         Date date = null;
-        try
-        {
+        try {
             return date = df.parse(now);
-        }
-        catch (ParseException e)
-        {
-            e.printStackTrace();
-        }
-        return date;
-    }
-    /**
-     *
-     * @author
-     * @title :getNowTime
-     * @Description:获取当前时间，返回14位格式的date日期
-     * @return Date
-     * @date 2015年7月28日 上午11:11:47
-     */
-    public static Date getNowDate()
-    {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
-        String now = df.format(new Date());
-        Date date = null;
-        try
-        {
-            return date = df.parse(now);
-        }
-        catch (ParseException e)
-        {
-            e.printStackTrace();
-        }
-        return date;
-    }
-    /**
-     * 获取去掉时分秒的日期
-     * @param dateTime
-     * @param pattern
-     * @return
-     */
-    public static Date getDateLongTime(long dateTime,String pattern)
-    {
-        if(org.apache.commons.lang.StringUtils.isBlank(pattern)){
-            pattern = defaultDateTimePattern;
-        }
-        SimpleDateFormat df = new SimpleDateFormat(pattern);// 设置日期格式
-        String now = df.format(new Date(dateTime));
-        Date date = null;
-        try
-        {
-            return date = df.parse(now);
-        }
-        catch (ParseException e)
-        {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
         return date;
     }
 
     /**
-     *
+     * @return Date
      * @author
      * @title :getNowTime
      * @Description:获取当前时间，返回14位格式的date日期
-     * @return Date
      * @date 2015年7月28日 上午11:11:47
      */
-    public static String getNowDateStr()
-    {
+    public static Date getNowDate() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
+        String now = df.format(new Date());
+        Date date = null;
+        try {
+            return date = df.parse(now);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    /**
+     * 获取去掉时分秒的日期
+     *
+     * @param dateTime
+     * @param pattern
+     * @return
+     */
+    public static Date getDateLongTime(long dateTime, String pattern) {
+        if (org.apache.commons.lang.StringUtils.isBlank(pattern)) {
+            pattern = defaultDateTimePattern;
+        }
+        SimpleDateFormat df = new SimpleDateFormat(pattern);// 设置日期格式
+        String now = df.format(new Date(dateTime));
+        Date date = null;
+        try {
+            return date = df.parse(now);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    /**
+     * @return Date
+     * @author
+     * @title :getNowTime
+     * @Description:获取当前时间，返回14位格式的date日期
+     * @date 2015年7月28日 上午11:11:47
+     */
+    public static String getNowDateStr() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");// 设置日期格式
         String now = df.format(new Date());
 
@@ -270,29 +254,25 @@ public final class DateUtil {
     }
 
     /**
-     *
+     * @return Date
      * @author
      * @title :getNowTime
      * @Description:获取当前时间，返回14位格式的date日期
-     * @return Date
      * @date 2015年7月28日 上午11:11:47
      */
-    public static String getNowTimeStr()
-    {
+    public static String getNowTimeStr() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
         return df.format(new Date());
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :getYesterday
      * @Description:获得昨天时间
-     * @return String
      * @date 2015年8月19日 上午9:27:17
      */
-    public static String getYesterday()
-    {
+    public static String getYesterday() {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -303,84 +283,76 @@ public final class DateUtil {
         return yesterday;
     }
 
-    public static Date getYesterdayDate()
-    {
+    public static Date getYesterdayDate() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_MONTH, -1);
         Date date = calendar.getTime();
         return date;
     }
+
     /**
-     *
+     * @return String
      * @author
      * @title :getYesterday
      * @Description:获得昨天时间
-     * @return String
      * @date 2015年8月19日 上午9:27:17
      */
-    public static String getYesterday(String time_pattern)
-    {
+    public static String getYesterday(String timePattern) {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_MONTH, -1);
         Date date = calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat(time_pattern); // 设置时间格式
+        SimpleDateFormat sdf = new SimpleDateFormat(timePattern); // 设置时间格式
         String yesterday = sdf.format(date);
         return yesterday;
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :getYesterday
      * @Description:获得3天前时间
-     * @return String
      * @date 2015年8月19日 上午9:27:17
      */
-    public static String get3DaysAgo(String time_pattern)
-    {
+    public static String get3DaysAgo(String timePattern) {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_MONTH, -3);
         Date date = calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat(time_pattern); // 设置时间格式
+        SimpleDateFormat sdf = new SimpleDateFormat(timePattern); // 设置时间格式
         String yesterday = sdf.format(date);
         return yesterday;
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :getYesterday
      * @Description:获得7天前时间
-     * @return String
      * @date 2015年8月19日 上午9:27:17
      */
-    public static String get7DaysAgo(String time_pattern)
-    {
+    public static String get7DaysAgo(String timePattern) {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.DAY_OF_MONTH, -7);
         Date date = calendar.getTime();
-        SimpleDateFormat sdf = new SimpleDateFormat(time_pattern); // 设置时间格式
+        SimpleDateFormat sdf = new SimpleDateFormat(timePattern); // 设置时间格式
         String yesterday = sdf.format(date);
         return yesterday;
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :getYesterday
      * @Description:获得昨天时间
-     * @return String
      * @date 2015年8月19日 上午9:27:17
      */
-    public static String getTwoMonth()
-    {
+    public static String getTwoMonth() {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -394,17 +366,17 @@ public final class DateUtil {
 
     /**
      * 获取几个月前的时间
+     *
      * @param num
      * @return
      */
-    public static String getBeforMonth(int num,String pattern)
-    {
+    public static String getBeforMonth(int num, String pattern) {
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         calendar.add(Calendar.MONTH, num);
         Date date = calendar.getTime();
-        if(StringUtils.isBlank(pattern)){
+        if (StringUtils.isBlank(pattern)) {
             pattern = DateUtil.defaultDateTimePattern;
         }
         SimpleDateFormat sdf = new SimpleDateFormat(pattern); // 设置时间格式
@@ -414,6 +386,7 @@ public final class DateUtil {
 
     /**
      * 时间加一秒
+     *
      * @param date
      * @return
      */
@@ -425,15 +398,13 @@ public final class DateUtil {
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :getTomorrow
      * @Description:获得明天时间
-     * @return String
      * @date 2015年8月19日 上午9:28:17
      */
-    public static String getTomorrow()
-    {
+    public static String getTomorrow() {
         Calendar c = Calendar.getInstance();
         Date date = new Date();
         c.setTime(date);
@@ -444,24 +415,19 @@ public final class DateUtil {
     }
 
     /**
+     * @return int
      * @author
      * @title :getAgeFromBirthday
      * @Description:根据生日获得年龄
-     * @return int
      * @date 2015年7月28日 下午1:41:53
      */
-    public static int getAgeFromBirthday(Date birthday)
-    {
+    public static int getAgeFromBirthday(Date birthday) {
         int age = 0;
-        if (birthday == null)
-        {
+        if (birthday == null) {
             return age;
-        }
-        else
-        {
+        } else {
             Calendar cal = Calendar.getInstance();
-            if (cal.before(birthday))
-            {
+            if (cal.before(birthday)) {
                 throw new IllegalArgumentException("The birthDay is before Now.It's unbelievable!");
             }
             int yearNow = cal.get(Calendar.YEAR);
@@ -472,17 +438,12 @@ public final class DateUtil {
             int monthBirth = cal.get(Calendar.MONTH) + 1;
             int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
             age = yearNow - yearBirth;
-            if (monthNow <= monthBirth)
-            {
-                if (monthNow == monthBirth)
-                {
-                    if (dayOfMonthNow < dayOfMonthBirth)
-                    {
+            if (monthNow <= monthBirth) {
+                if (monthNow == monthBirth) {
+                    if (dayOfMonthNow < dayOfMonthBirth) {
                         age--;
                     }
-                }
-                else
-                {
+                } else {
                     age--;
                 }
             }
@@ -492,48 +453,40 @@ public final class DateUtil {
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :formatDate
      * @Description:TODO
-     * @return String
      * @date 2015年7月29日 下午5:08:55
      */
-    public static String formatDate(Date date, String partem)
-    {
+    public static String formatDate(Date date, String partem) {
         return DateUtil.formatDate(date, partem, null);
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :formatDate
      * @Description:TODO
-     * @return String
      * @date 2015年7月29日 下午5:08:55
      */
-    public static String formatDate(Date date, String partem,String timeZoneStr)
-    {
-        if (date == null)
-        {
+    public static String formatDate(Date date, String partem, String timeZoneStr) {
+        if (date == null) {
             return "";
         }
         TimeZone timeZone = null;
-        if(org.apache.commons.lang.StringUtils.isBlank(timeZoneStr)){
+        if (org.apache.commons.lang.StringUtils.isBlank(timeZoneStr)) {
             Calendar cal = Calendar.getInstance();
             timeZone = cal.getTimeZone();
-        }else{
+        } else {
             timeZone = TimeZone.getTimeZone(timeZoneStr);
         }
 
         SimpleDateFormat df = new SimpleDateFormat(partem);
         df.setTimeZone(timeZone);
-        try
-        {
+        try {
             return df.format(date);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return "";
         }
     }
@@ -545,66 +498,52 @@ public final class DateUtil {
      * @param pattern
      * @return
      */
-    public static String formatStringDate(String date, String pattern)
-    {
+    public static String formatStringDate(String date, String pattern) {
         SimpleDateFormat format = new SimpleDateFormat(pattern);
-        try
-        {
+        try {
             Date temp = format.parse(date);
             return format.format(temp);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return "";
         }
     }
 
     /**
-     *
+     * @return int
      * @author
      * @title :getDayByTwoDate
      * @Description:TODO
-     * @return int
      * @date 2015年8月5日 下午4:47:44
      */
-    public static int getDayByTwoDate(Date date2, Date date1)
-    {
+    public static int getDayByTwoDate(Date date2, Date date1) {
         int day = 0;
-        try
-        {
-            if (date2 == null || date1 == null)
-            {
+        try {
+            if (date2 == null || date1 == null) {
                 return day;
-            }
-            else
-            {
+            } else {
                 day = (int) ((date2.getTime() - date1.getTime()) / 86400000);
             }
             return day;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
 
         }
         return day;
     }
 
     /**
-     *
+     * @return String
      * @author
      * @title :prettyTime
      * @Description:TODO
-     * @return String
      * @date 2015年8月5日 下午4:29:27
      */
-    public static String prettyTime(Date date)
-    {
+    public static String prettyTime(Date date) {
 
         Calendar calendar = Calendar.getInstance();
 
         int nowYear = calendar.get(Calendar.YEAR);
-        int nowDay = calendar.get(calendar.DAY_OF_MONTH);
-        int nowMonth = calendar.get(calendar.MONTH);
+        int nowDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int nowMonth = calendar.get(Calendar.MONTH);
 
         calendar.setTime(date);
 
@@ -618,24 +557,16 @@ public final class DateUtil {
 
         SimpleDateFormat dateFormat = null;
         String displayTime = "";
-        if (subYear == 0)
-        {
-            if (subDay == 0)
-            {
+        if (subYear == 0) {
+            if (subDay == 0) {
                 dateFormat = new SimpleDateFormat("HH:mm");
-            }
-            else if (subDay == 1)
-            {
+            } else if (subDay == 1) {
                 dateFormat = new SimpleDateFormat("HH:mm");
                 displayTime = "昨天" + dateFormat;
-            }
-            else
-            {
+            } else {
                 dateFormat = new SimpleDateFormat("M月d日");
             }
-        }
-        else
-        {
+        } else {
             dateFormat = new SimpleDateFormat("yyyy年M月d日");
         }
         displayTime = (dateFormat == null ? displayTime : dateFormat.format(date));
@@ -652,23 +583,18 @@ public final class DateUtil {
      *
      * @return
      */
-    public static String dateAddOrSubtractDay(String option, String _date)
-    {
-        if (DateUtil.PRE.equals(option))
-        {
+    public static String dateAddOrSubtractDay(String option, String date) {
+        if (DateUtil.PRE.equals(option)) {
             // 时间减一天
-            return DateUtil.dateAddOrSubtractDay(_date, -1);
+            return DateUtil.dateAddOrSubtractDay(date, -1);
 
-        }
-        else if (DateUtil.NEXT.equals(option))
-        {
+        } else if (DateUtil.NEXT.equals(option)) {
             // 时间加一天
-            return DateUtil.dateAddOrSubtractDay(_date, 1);
+            return DateUtil.dateAddOrSubtractDay(date, 1);
+        } else {
+            return date;
         }
-        else
-            return  _date;
     }
-
 
 
     /***
@@ -680,24 +606,20 @@ public final class DateUtil {
      *
      * @return
      */
-    public static String dateAddOrSubtractDay(String _date,int days)
-    {
+    public static String dateAddOrSubtractDay(String date, int days) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cl = Calendar.getInstance();
-        Date date = null;
+        Date newDate = null;
 
-        try
-        {
-            date = (Date) sdf.parse(_date);
-        }
-        catch (ParseException e)
-        {
+        try {
+            newDate = (Date) sdf.parse(date);
+        } catch (ParseException e) {
             e.printStackTrace();
         }
-        cl.setTime(date);
-        cl.add(Calendar.DAY_OF_MONTH,days);
-        date = cl.getTime();
-        return sdf.format(date);
+        cl.setTime(newDate);
+        cl.add(Calendar.DAY_OF_MONTH, days);
+        newDate = cl.getTime();
+        return sdf.format(newDate);
     }
 
     /***
@@ -709,44 +631,35 @@ public final class DateUtil {
      *
      * @return
      */
-    public static Date dateAddOrSubtractDay(Date _date,int days)
-    {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    public static Date dateAddOrSubtractDay(Date date, int days) {
         Calendar cl = Calendar.getInstance();
-        Date date = _date;
         cl.setTime(date);
-        cl.add(Calendar.DAY_OF_MONTH,days);
+        cl.add(Calendar.DAY_OF_MONTH, days);
         return cl.getTime();
     }
 
-    public static Date dateAddOrSubtractDay(String option, Date _date)
-    {
+    public static Date dateAddOrSubtractDay(String option, Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar cl = Calendar.getInstance();
-        Date date = _date;
         cl.setTime(date);
-        if (DateUtil.PRE.equals(option))
-        {
+        if (DateUtil.PRE.equals(option)) {
             // 时间减一天
-            return DateUtil.dateAddOrSubtractDay(_date,-1);
+            return DateUtil.dateAddOrSubtractDay(date, -1);
 
-        }
-        else if (DateUtil.NEXT.equals(option))
-        {
+        } else if (DateUtil.NEXT.equals(option)) {
             // 时间加一天
-            return DateUtil.dateAddOrSubtractDay(_date,1);
+            return DateUtil.dateAddOrSubtractDay(date, 1);
         }
         return cl.getTime();
     }
 
-    public static String prettyTime2(Date date)
-    {
+    public static String prettyTime2(Date date) {
 
         Calendar calendar = Calendar.getInstance();
 
         int nowYear = calendar.get(Calendar.YEAR);
-        int nowDay = calendar.get(calendar.DAY_OF_MONTH);
-        int nowMonth = calendar.get(calendar.MONTH);
+        int nowDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int nowMonth = calendar.get(Calendar.MONTH);
 
         calendar.setTime(date);
 
@@ -758,23 +671,15 @@ public final class DateUtil {
 
         SimpleDateFormat dateFormat = null;
         String displayTime = "";
-        if (subYear == 0)
-        {
-            if (subDay == 0)
-            {
+        if (subYear == 0) {
+            if (subDay == 0) {
                 displayTime = "今天";
-            }
-            else if (subDay == 1)
-            {
+            } else if (subDay == 1) {
                 displayTime = "昨天";
-            }
-            else
-            {
+            } else {
                 dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             }
-        }
-        else
-        {
+        } else {
             dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         }
         displayTime = (dateFormat == null ? displayTime : dateFormat.format(date));
@@ -787,31 +692,25 @@ public final class DateUtil {
      * @param
      * @return
      */
-    public static Date minutesAfterDate(Date date, Integer minutes)
-    {
+    public static Date minutesAfterDate(Date date, Integer minutes) {
         Long millisecond = date.getTime() + minutes * 60 * 1000;
         return new Date(millisecond);
     }
 
-    public static Date formatStrToDate(Date date)
-    {
+    public static Date formatStrToDate(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = formatter.format(date);
-        return DateUtil.parse(dateString,"yyyy-MM-dd");
-//		Date d = new Date(dateString);
-//		return d;
+        return DateUtil.parse(dateString, "yyyy-MM-dd");
     }
 
     /**
-     *
+     * @return Date
      * @author
      * @title :getNextNMinTime
      * @Description:得到后续的N分钟后的时间
-     * @return Date
      * @date 2015年8月25日 上午10:10:40
      */
-    public static String getNextNMinuteTime(Integer minute)
-    {
+    public static String getNextNMinuteTime(Integer minute) {
         Date date = new Date(System.currentTimeMillis() + minute * 60 * 1000);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// 设置日期格式
         String now = df.format(date);
@@ -824,20 +723,17 @@ public final class DateUtil {
      * @param time
      * @return
      */
-    public static String timeToStr(Timestamp time)
-    {
+    public static String timeToStr(Timestamp time) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return df.format(time);
     }
 
-    public static String dateTimeToStr(Date date)
-    {
+    public static String dateTimeToStr(Date date) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return df.format(date);
     }
 
-    public static String dateToStr(Date date)
-    {
+    public static String dateToStr(Date date) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         return df.format(date);
     }
@@ -848,8 +744,7 @@ public final class DateUtil {
      * @param time
      * @return
      */
-    public static String timeToStrDate(Timestamp time)
-    {
+    public static String timeToStrDate(Timestamp time) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         return df.format(time);
     }
@@ -861,19 +756,14 @@ public final class DateUtil {
      * @param endDate
      * @return
      */
-    public static List<String> dateIntervalAll(String startDate, String endDate)
-    {
+    public static List<String> dateIntervalAll(String startDate, String endDate) {
         List<String> list = new ArrayList<String>();
         list.add(startDate);
-        while (true)
-        {
+        while (true) {
             String date = dateAddOrSubtractDay("pre", startDate);
-            if (endDate.equals(date))
-            {
+            if (endDate.equals(date)) {
                 break;
-            }
-            else
-            {
+            } else {
                 list.add(date);
             }
         }
@@ -887,28 +777,21 @@ public final class DateUtil {
      * @param date
      * @return
      */
-    public static boolean isWeekend(String date)
-    {
+    public static boolean isWeekend(String date) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 
         Date bdate;
         boolean isWeekend = true;
-        try
-        {
+        try {
             bdate = df.parse(date);
             Calendar cal = Calendar.getInstance();
             cal.setTime(bdate);
-            if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
-            {
+            if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                 isWeekend = true;
-            }
-            else
-            {
+            } else {
                 isWeekend = false;
             }
-        }
-        catch (ParseException e)
-        {
+        } catch (ParseException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
@@ -921,36 +804,27 @@ public final class DateUtil {
      * @param date
      * @return
      */
-    public static boolean isWeekend(Date date,String timeZone)
-    {
+    public static boolean isWeekend(Date date, String timeZone) {
         Calendar cal = Calendar.getInstance();
         cal.setTimeZone(TimeZone.getTimeZone(timeZone));
         cal.setTime(date);
         boolean isWeekend = true;
-        try
-        {
-            if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
-            {
+        try {
+            if (cal.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || cal.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
                 isWeekend = true;
-            }
-            else
-            {
+            } else {
                 isWeekend = false;
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return isWeekend;
     }
 
-    public static String secToTime(long time)
-    {
+    public static String secToTime(long time) {
         // 小于一秒不计算
-        if (time < 1000)
-        {
+        if (time < 1000) {
             return "0";
         }
         time = time / 1000;
@@ -958,18 +832,14 @@ public final class DateUtil {
         long hour = 0;
         long minute = 0;
         // long second = 0;
-        if (time <= 0)
+        if (time <= 0) {
             return "00:00";
-        else
-        {
+        } else {
             minute = time / 60;
-            if (minute < 60)
-            {
+            if (minute < 60) {
                 // second = time % 60;
                 timeStr = unitFormat(minute) + "分";// + unitFormat(second) + "秒"
-            }
-            else
-            {
+            } else {
                 hour = minute / 60;
                 minute = minute % 60;
                 // second = time - hour * 3600 - minute * 60;
@@ -982,45 +852,38 @@ public final class DateUtil {
         return timeStr;
     }
 
-    public static String unitFormat(long i)
-    {
+    public static String unitFormat(long i) {
         String retStr = null;
-        if (i >= 0 && i < 10)
+        if (i >= 0 && i < 10) {
             retStr = Long.toString(i);
-        else
+        } else {
             retStr = "" + i;
+        }
         return retStr;
     }
 
 
-    public  static String getMondayDateStr()
-    {
+    public static String getMondayDateStr() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // 设置时间格式
         Calendar c = Calendar.getInstance();
-        int day_of_week = c.get(Calendar.DAY_OF_WEEK) - 1;
-        if (day_of_week == 0)
-        {
-            day_of_week = 7;
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - 1;
+        if (dayOfWeek == 0) {
+            dayOfWeek = 7;
         }
-        c.add(Calendar.DATE, -day_of_week + 1);
+        c.add(Calendar.DATE, -dayOfWeek + 1);
         return sdf.format(c.getTime());
     }
 
-    public static Long getMondayDateLong()
-    {
+    public static Long getMondayDateLong() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Calendar c = Calendar.getInstance();
-        int day_of_week = c.get(Calendar.DAY_OF_WEEK) - 1;
-        if (day_of_week == 0)
-        {
-            day_of_week = 7;
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK) - 1;
+        if (dayOfWeek == 0) {
+            dayOfWeek = 7;
         }
-        c.add(Calendar.DATE, -day_of_week + 1);
+        c.add(Calendar.DATE, -dayOfWeek + 1);
 
-        return DateUtil.parse(sdf.format(c.getTime()),"yyyy-MM-dd").getTime();
-
-
-//		return c.getTime().getTime();
+        return DateUtil.parse(sdf.format(c.getTime()), "yyyy-MM-dd").getTime();
     }
 
     /**
@@ -1029,93 +892,81 @@ public final class DateUtil {
      * @param date
      * @return
      */
-    public static String getWeekOfYear(String date)
-    {
-        String[] weeks = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
+    public static String getWeekOfYear(String date) {
+        String[] weeks = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
         Calendar cal = Calendar.getInstance();
-        try
-        {
+        try {
             cal.setTime(parseDate(date, "yyyy-MM-dd HH:mm"));
-        }
-        catch (ParseException e)
-        {
+        } catch (ParseException e) {
             e.printStackTrace();
         }
-        int week_of_year = cal.get(Calendar.WEEK_OF_YEAR);
-        return weeks[week_of_year];
+        int weekOfYear = cal.get(Calendar.WEEK_OF_YEAR);
+        return weeks[weekOfYear];
     }
 
-    public static Date parseDate(String dateStr, String format) throws ParseException
-    {
+    public static Date parseDate(String dateStr, String format) throws ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-        try
-        {
+        try {
             return simpleDateFormat.parse(dateStr);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return new Date();
         }
     }
 
-    public String yesterday()
-    {
-        Calendar cal=Calendar.getInstance();
-        cal.add(Calendar.DATE,-1);
-        Date time=cal.getTime();
+    public String yesterday() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        Date time = cal.getTime();
         return new SimpleDateFormat("yyyy-MM-dd").format(time);
     }
 
-    public static Long calculateTwoTimeSecond(Date beginDate , Date endDate)
-    {
-        long miSecond = beginDate.getTime()-endDate.getTime();
-        return miSecond/1000;
+    public static Long calculateTwoTimeSecond(Date beginDate, Date endDate) {
+        long miSecond = beginDate.getTime() - endDate.getTime();
+        return miSecond / 1000;
     }
 
-    public static boolean isToday(Date date){
-        if(date==null){
+    public static boolean isToday(Date date) {
+        if (date == null) {
             return false;
         }
-        Long datecon = DateUtil.parse(DateUtil.formatDate(date, "yyyy-MM-dd"),"yyyy-MM-dd").getTime();
+        Long datecon = DateUtil.parse(DateUtil.formatDate(date, "yyyy-MM-dd"), "yyyy-MM-dd").getTime();
 
-        Long today =  DateUtil.parse(DateUtil.formatDate(new Date(), "yyyy-MM-dd"),"yyyy-MM-dd").getTime();
+        Long today = DateUtil.parse(DateUtil.formatDate(new Date(), "yyyy-MM-dd"), "yyyy-MM-dd").getTime();
 
-        if(datecon.longValue()==today.longValue()){
+        if (datecon.longValue() == today.longValue()) {
             return true;
         }
         return false;
     }
 
-    public static boolean isToday(Long date,TimeZone timeZone ){
+    public static boolean isToday(Long date, TimeZone timeZone) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(timeZone);
-        if(date==null){
+        if (date == null) {
             return false;
         }
         calendar.setTimeInMillis(date);
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
                 0, 0, 0);
-        Long starttime =  calendar.getTimeInMillis();
+        Long starttime = calendar.getTimeInMillis();
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
                 23, 59, 59);
         Long endtime = calendar.getTimeInMillis();
 
         System.out.println(starttime);
         System.out.println(endtime);
-        Long today = new Date().getTime();
+        Long today = System.currentTimeMillis();
         System.out.println(today);
-        if(today>starttime && today<endtime){
+        if (today > starttime && today < endtime) {
             return true;
         }
         return false;
     }
 
 
-    public static Long timeDifference(String startTime,String endTime)
-    {
-        Long diffValue = 0l;
-        if (startTime.contains(":") && endTime.contains(":"))
-        {
+    public static Long timeDifference(String startTime, String endTime) {
+        Long diffValue = 0L;
+        if (startTime.contains(":") && endTime.contains(":")) {
             String[] startArray = startTime.split(":");
             String[] endArray = endTime.split(":");
             Long diffValueH = (Long.valueOf(endArray[0]).longValue() - Long.valueOf(startArray[0]).longValue());
@@ -1125,16 +976,17 @@ public final class DateUtil {
         return diffValue;
     }
 
-    public static String getTimeZone(Object timeZone){
+    public static String getTimeZone(Object timeZone) {
         String timeZoneRet = DateUtil.defaultTimeZone;
         if (timeZone != null) {
             timeZoneRet = (String) timeZone;
         }
-        if (timeZone==null || org.apache.commons.lang.StringUtils.isBlank((String)timeZone)) {
+        if (timeZone == null || org.apache.commons.lang.StringUtils.isBlank((String) timeZone)) {
             timeZoneRet = DateUtil.defaultTimeZone;
         }
         return timeZoneRet;
     }
+
     // 获得某天最小时间 2017-10-15 00:00:00
     public static String getStartOfDay(Date date) {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(date.getTime()), ZoneId.systemDefault());
@@ -1146,7 +998,8 @@ public final class DateUtil {
 
     // 获得某天最大时间 2017-10-15 23:59:59
     public static String getEndOfDay(Date date) {
-        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(date.getTime()), ZoneId.systemDefault());;
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(date.getTime()), ZoneId.systemDefault());
+        ;
         LocalDateTime endOfDay = localDateTime.with(LocalTime.MAX);
         Date date1 = Date.from(endOfDay.atZone(ZoneId.systemDefault()).toInstant());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
