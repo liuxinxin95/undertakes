@@ -14,6 +14,8 @@ import  org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -40,6 +42,8 @@ public class SysGeneratorController {
     @Autowired
     private SysGeneratorService sysGeneratorService;
 
+    @Value("{generator.file.path}")
+    private String filePath;
     /**
      * 列表数据
      *
@@ -79,7 +83,7 @@ public class SysGeneratorController {
             return Result.error("生成失败");
         }
         String fileName = "gender" + DateUtil.formatDateTime(LocalDateTime.now(), "yyyyMMddHHMMss") + ".zip";
-        File file = new File("F:/code/" + fileName);
+        File file = new File(filePath + fileName);
         try {
             FileUtils.writeByteArrayToFile(file, data);
         } catch (IOException e) {

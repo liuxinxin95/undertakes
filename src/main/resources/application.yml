@@ -23,3 +23,7 @@ mybatis:
 #    configLocation: classpath:mybatis.xml
     configuration:
       map-underscore-to-camel-case: true
+
+generator:
+  file:
+    path: ${user.home}/undertakes/generator/file
