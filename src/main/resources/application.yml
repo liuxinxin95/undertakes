@@ -19,11 +19,11 @@ server:
   port: 8056
 # Mybatis配置
 mybatis:
-    mapperLocations: classpath:mapper/*.xml
-#    configLocation: classpath:mybatis.xml
-    configuration:
-      map-underscore-to-camel-case: true
+  mapperLocations: classpath:mapper/*.xml
+  #    configLocation: classpath:mybatis.xml
+  configuration:
+    map-underscore-to-camel-case: true
 
 generator:
   file:
-    path: ${user.home}/undertakes/generator/file
+    path: ${user.home}/undertakes/generator/file/
