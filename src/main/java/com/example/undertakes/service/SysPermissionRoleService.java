@@ -48,4 +48,5 @@ public interface SysPermissionRoleService {
     * @throws Exception
     */
     void deleteBatch(Long[] ids) throws Exception;
+
 }
